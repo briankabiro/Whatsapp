@@ -11,26 +11,15 @@ import {
   Text,
   View
 } from 'react-native';
-import Chats from './app/components/Chats.js';
+import { TabNavigator } from 'react-navigation';
+import Chats from './app/components/Chats';
+import Contacts from './app/components/Contacts';
+import Calls from './app/components/Calls';
 
-
-export default class Whatsapp extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Main />
-      </View>
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
-  }
-});
+const Whatsapp = TabNavigator({    
+  Calls: { screen: Calls},
+  Chats: { screen: Chats },
+  Contacts: {screen: Contacts}
+}); 
 
 AppRegistry.registerComponent('Whatsapp', () => Whatsapp);
