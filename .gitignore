@@ -54,3 +54,4 @@ fastlane/Preview.html
 fastlane/screenshots
 
 node_modules/
+app/assets/

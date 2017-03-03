@@ -20,6 +20,14 @@ const Whatsapp = TabNavigator({    
   Calls: { screen: Calls},
   Chats: { screen: Chats },
   Contacts: {screen: Contacts}
+},{
+	tabBarOptions:{
+		activeTintColor:'white',
+    inactiveTintColor:'white',
+		style:{
+			backgroundColor:'teal'
+		}
+	}
 }); 
 
 AppRegistry.registerComponent('Whatsapp', () => Whatsapp);

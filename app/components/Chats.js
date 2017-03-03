@@ -5,7 +5,8 @@ import {
   View,
   Dimensions,
   ListView,
-  Image
+  Image,
+  TouchableOpacity
 } from 'react-native';
 import Contacts from './Contacts';
 import Calls from './Calls';
@@ -17,15 +18,22 @@ var {height, width} = Dimensions.get('window');
 	Add gotham people photos
 	getMockups to design from
 	Add more people
+	
 	change navigator and tint color
+	add calls page
+	introduce stack navigator
+	add chat functionality
  */
 
 const image1 = require('../assets/bullock.jpg');
-//const image2 = require('../assets/gordon.jpg');
-const image3 = require('../assets/katwoman.jpg');
-const image4 = require('../assets/leslie.png');
-//const image5 = require('../assets/wayne.jpg');
-//const image6 = require('../assets/penguin.jpg');
+const image2 = require('../assets/katwoman.jpg');
+const image3 = require('../assets/leslie.png');
+const image4 = require('../assets/deGea.jpg');
+const image5 = require('../assets/martial.jpg');
+const image6 = require('../assets/mata.jpg');
+const image7 = require('../assets/memphis.jpg');
+const image8 = require('../assets/rooney.jpg');
+const image9 = require('../assets/mr_robot.jpg');
 
 const data = [{
 	"id":1,
@@ -33,15 +41,45 @@ const data = [{
 	"message": "I caught the goat guy",
 	"image":image1
 },{
-	"id":3,
+	"id":2,
 	"first_name":"Selina Kyle",
 	"message": "I will be the cat woman",
+	"image":image2
+},{
+	"id":3,
+	"first_name":"Lee Tomkins",
+	"message": "I still love Detective Gordon but mourning for Mario",
 	"image":image3
 },{
 	"id":4,
-	"first_name":"Lee Tomkins",
-	"message": "I still love Detective Gordon but mourning for Mario",
-	"image":image4
+	"first_name":"De Gea",
+	"message":"Only the best keeper in the world.",
+	image:image4
+},{
+	"id":5,
+	"first_name":"Martial",
+	"message":"United is my second home",
+	image:image5
+},{
+	"id":6,
+	"first_name":"Juan Mata",
+	"message":"Spain and United. 100%",
+	image:image6
+},{
+	"id":7,
+	"first_name":"Memphis Depay",
+	"message":"The best number seven in Holland",
+	image:image7
+},{
+	"id":8,
+	"first_name":"Wayne Rooney",
+	"message":"Number 10, 9 and 8",
+	image:image8
+},{
+	"id":9,
+	"first_name":"Elliot Alderson",
+	"message":"I am not a robot",
+	image:image9
 }]
 
 const ds = new ListView.DataSource({ rowHasChanged:(r1,r2) => r1 !== r2 });
@@ -61,13 +99,17 @@ export default class Chats extends Component{
 	}
 	eachMessage(x){
 		return(
+			<TouchableOpacity>
 			<View style = {styles.profile}>
 					<Image source={x.image} style = {styles.photo} />
 					<View style={styles.profileDetails}>
 						<Text style = {styles.name}>{x.first_name}</Text>
 						<Text style = {styles.status}>{x.message}</Text>
+						<View style={styles.line}></View>
 					</View>
+
 			</View>
+			</TouchableOpacity>
 		)
 	}
 	render(){
@@ -99,7 +141,10 @@ const styles = StyleSheet.create({
 	profile:{
 		flexDirection:'row',
 		width:width,
-		height:height/10
+		height:height/10,
+		borderBottomColor:'grey',
+		borderBottomWidth:1,
+		marginBottom:width/50
 	},
 	photo:{
 		height:height/12,
@@ -116,7 +161,7 @@ const styles = StyleSheet.create({
 	name:{
 		fontWeight:'100',
 		color:'black'
-	}
+	},
 });
 
 
