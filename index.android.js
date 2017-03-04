@@ -15,17 +15,18 @@ import { TabNavigator } from 'react-navigation';
 import Chats from './app/components/Chats';
 import Contacts from './app/components/Contacts';
 import Calls from './app/components/Calls';
+import ChatScreen from './app/components/ChatScreen';
 
 const Whatsapp = TabNavigator({    
   Calls: { screen: Calls},
   Chats: { screen: Chats },
-  Contacts: {screen: Contacts}
+  Contacts: {screen: Contacts},
+  ChatScreen: {screen: ChatScreen}
 },{
 	tabBarOptions:{
-		activeTintColor:'white',
-    inactiveTintColor:'white',
+    indicatorStyle:'white',
 		style:{
-			backgroundColor:'teal'
+			backgroundColor:'teal',
 		}
 	}
 }); 
