@@ -12,6 +12,7 @@ import Contacts from './Contacts';
 import Calls from './Calls';
 import ChatScreen from './ChatScreen';
 
+
 var {height, width} = Dimensions.get('window');
 
 /*
@@ -101,9 +102,8 @@ export default class Chats extends Component{
 	}
 	eachMessage(x){
 		return(
-			<TouchableOpacity onPress={() => this.props.navigation.navigate("ChatScreen", {user:x.first_name})}
-				title='Chat with ' + x.first_name + ' ' 
-			>
+			<TouchableOpacity onPress={() => {this.props.navigation.navigate("ChatScreen", {user:x.first_name});
+			console.log(x.first_name)}}>
 			<View style = {styles.profile}>
 					<Image source={x.image} style = {styles.photo} />
 					<View style={styles.profileDetails}>
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
 		height:height/10,
 		borderBottomColor:'grey',
 		borderBottomWidth:1,
-		marginBottom:width/50
+		marginTop:width/50
 	},
 	photo:{
 		height:height/12,

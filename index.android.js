@@ -16,19 +16,30 @@ import Chats from './app/components/Chats';
 import Contacts from './app/components/Contacts';
 import Calls from './app/components/Calls';
 import ChatScreen from './app/components/ChatScreen';
+import { StackNavigator } from 'react-navigation';
 
-const Whatsapp = TabNavigator({    
-  Calls: { screen: Calls},
-  Chats: { screen: Chats },
-  Contacts: {screen: Contacts},
-  ChatScreen: {screen: ChatScreen}
+const MainScreenNavigator = TabNavigator({
+    Calls: { screen: Calls},
+    Chats: { screen: Chats },
+    Contacts: {screen: Contacts}
 },{
-	tabBarOptions:{
-    indicatorStyle:'white',
-		style:{
-			backgroundColor:'teal',
-		}
-	}
+  tabBarOptions:{
+    indicatorStyle:{
+        backgroundColor:'white'
+    },
+    style:{
+      backgroundColor:'teal',
+    }
+  }
+});
+
+MainScreenNavigator.navigationOptions = {
+  title:'Whatsapp',
+}
+
+const Whatsapp = StackNavigator({
+  Home: { screen: MainScreenNavigator},  
+  ChatScreen : {screen: ChatScreen}
 }); 
 
 AppRegistry.registerComponent('Whatsapp', () => Whatsapp);
