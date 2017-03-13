@@ -30,7 +30,7 @@ const MainScreenNavigator = TabNavigator({
     style:{
       backgroundColor:'teal',
     },
-    initialRouteName:'Chats',
+    initialRouteName:Chats,
   }
 });
 

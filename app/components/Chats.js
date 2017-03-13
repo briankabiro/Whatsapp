@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
 		flexDirection:'row',
 		width:width,
 		height:height/10,
-		borderBottomColor:'grey',
+		borderBottomColor:'black',
 		borderBottomWidth:1,
 		marginTop:width/50
 	},
