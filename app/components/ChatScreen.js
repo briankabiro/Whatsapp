@@ -16,45 +16,20 @@ import {GiftedChat} from 'react-native-gifted-chat';
 export default class ChatScreen extends Component{
 	constructor(props) {
 	  super(props);
-	
+	  static navigationOptions = {
+	  	title:({ state }) => 'Chat with ${state.params.user}'
+	  };
 	  this.state = {messages: []};
 	  this.onSend = this.onSend.bind(this);
-	}
-	componentWillMount(){
-		this.setState({
-			messages:[
-				{
-					_id:1,
-					text:'Hello developer',
-					createdAt:new Date(Date.UTC(2017, 7, 30, 17, 20, 0)),
-					user:{
-						id: 2,
-						name: 'React Native'
-					},
-				},
-			],
-		});
-	}
-
-	onSend(messages = []){
-		this.setState((previousState) => {
-			return{
-				messages: GiftedChat.append(previousState.messages, messages)
-			};
-		});
 	}
 	render(){
 		return(
 			<View style={styles.container}>
 				<Image source = {require('../assets/background.jpg')} style={styles.backgroundImage}>
 				<View style={styles.textInput}>
-					<GiftedChat
-						messages={this.state.messages}
-						onSend={this.onSend}
-						user={{
-							_id: 1
-						}}
-					 />
+				<TextInput 
+
+				/>	
 				</View>
 				</Image>
 			</View>

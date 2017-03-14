@@ -8,9 +8,8 @@ import {
   Image,
   TouchableOpacity
 } from 'react-native';
-
 var {height, width} = Dimensions.get('window');
-
+import ChatScreen from './ChatScreen';
 
 const image1 = require('../assets/bullock.jpg');
 const image2 = require('../assets/katwoman.jpg');
@@ -23,50 +22,50 @@ const image8 = require('../assets/rooney.jpg');
 const image9 = require('../assets/mr_robot.jpg');
 
 const data = [{
-	"id":1,
-	"first_name":"Bullock",
-	"message": "I caught the goat guy",
-	"image":image1
-},{
-	"id":2,
-	"first_name":"Selina Kyle",
-	"message": "I will be the cat woman",
-	"image":image2
-},{
-	"id":3,
-	"first_name":"Lee Tomkins",
-	"message": "I still love Detective Gordon but mourning for Mario",
-	"image":image3
-},{
 	"id":4,
 	"first_name":"De Gea",
 	"message":"Only the best keeper in the world.",
 	image:image4
 },{
-	"id":5,
-	"first_name":"Martial",
-	"message":"United is my second home",
-	image:image5
+	"id":1,
+	"first_name":"Det. Bullock",
+	"message": "I caught the goat guy",
+	"image":image1
+},{
+	"id":9,
+	"first_name":"Elliot Alderson",
+	"message":"I am not a robot",
+	image:image9
 },{
 	"id":6,
 	"first_name":"Juan Mata",
 	"message":"Spain and United. 100%",
 	image:image6
 },{
+	"id":3,
+	"first_name":"Lee Tomkins",
+	"message": "I still love Detective Gordon but mourning for Mario",
+	"image":image3
+},{
+	"id":5,
+	"first_name":"Martial",
+	"message":"United is my second home",
+	image:image5
+},{
 	"id":7,
 	"first_name":"Memphis Depay",
 	"message":"The best number seven in Holland",
 	image:image7
 },{
+	"id":2,
+	"first_name":"Selina Kyle",
+	"message": "I will be the cat woman",
+	"image":image2
+},{
 	"id":8,
 	"first_name":"Wayne Rooney",
 	"message":"Number 10, 9 and 8",
 	image:image8
-},{
-	"id":9,
-	"first_name":"Elliot Alderson",
-	"message":"I am not a robot",
-	image:image9
 }]
 
 const ds = new ListView.DataSource({ rowHasChanged:(r1,r2) => r1 !== r2 });
@@ -86,15 +85,16 @@ export default class Chats extends Component{
 	}
 	eachMessage(x){
 		return(
-			<TouchableOpacity>
+			<TouchableOpacity onPress={() => this.props.navigation('Chat', {user:x.first_name})} title="Chat with Nani"
+			>
 			<View style = {styles.profile}>
 					<Image source={x.image} style = {styles.photo} />
 					<View style={styles.profileDetails}>
 						<Text style = {styles.name}>{x.first_name}</Text>
 						<Text style = {styles.status}>{x.message}</Text>
-						<View style={styles.line}></View>
 					</View>
 			</View>
+			<View style={styles.line}></View>
 			</TouchableOpacity>
 		)
 	}
@@ -128,9 +128,6 @@ const styles = StyleSheet.create({
 		flexDirection:'row',
 		width:width,
 		height:height/10,
-		borderBottomColor:'grey',
-		borderBottomWidth:1,
-		marginBottom:width/50
 	},
 	photo:{
 		height:height/12,
@@ -148,6 +145,9 @@ const styles = StyleSheet.create({
 		fontWeight:'100',
 		color:'black'
 	},
+	status:{
+		fontSize:13,
+	}
 });
 
 

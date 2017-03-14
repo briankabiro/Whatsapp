@@ -8,17 +8,22 @@ import {
 } from 'react-native';
 const image1 = require('../assets/leslie.png');
 const image2 = require('../assets/deGea.jpg');
-
+import Icon from 'react-native-vector-icons/MaterialIcons';
+// Material Icons - Call made, call received
 const data = [{
 	"id":1,
 	"first_name":"Lee Tomkins",
 	"time": "Today, 19:30",
-	"image":image1
+	"image":image1,
+	"call":"call-made",
+	"color":"teal"
 },{
 	"id":2,
 	"first_name":"David deGea",
 	"time": "Jana, 12:03",
-	"image":image2
+	"image":image2,
+	"call":"call-received",
+	"color":"red"
 }];
 var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
@@ -42,10 +47,13 @@ export default class Calls extends Component{
 					<Image style={styles.personImage} source={x.image} />
 					<View style={styles.callDetails}>
 						<Text style={styles.personName}>{x.first_name}</Text>
-						<Text>{x.time}</Text>
+						<View style={styles.lowerCallDetails}>
+							<Icon style={styles.callStatus} name = {x.call} size={12} color={x.color} />
+							<Text>{x.time}</Text>
+						</View>
 					</View>
 				</View>
-				<View style={styles.rightSide}></View>
+				<Icon name = "local-phone" size={20} color="teal"/>
 			</View>
 		)
 	}
@@ -84,13 +92,14 @@ const styles = StyleSheet.create({
 		width:50,
 		borderRadius:100
 	},
-	personName:{
-		color:'black'
+	lowerCallDetails:{
+		flexDirection:'row',
+		alignSelf:'flex-end'
 	},
-	rightSide:{
-		height:20,
-		width:20,
-		backgroundColor:'teal',
-		borderRadius:100
+	personName:{
+		color:'black',
+	},
+	callStatus:{
+		marginRight:2
 	}
 })

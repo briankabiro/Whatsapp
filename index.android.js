@@ -30,6 +30,10 @@ const MainScreenNavigator = TabNavigator({
     style:{
       backgroundColor:'teal',
     },
+    labelStyle:{
+      fontSize:11,
+      fontWeight:'bold'
+    },
     initialRouteName:Chats,
   }
 });

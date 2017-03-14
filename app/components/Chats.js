@@ -109,7 +109,6 @@ export default class Chats extends Component{
 					<View style={styles.profileDetails}>
 						<Text style = {styles.name}>{x.first_name}</Text>
 						<Text style = {styles.status}>{x.message}</Text>
-						<View style={styles.line}></View>
 					</View>
 
 			</View>
@@ -146,8 +145,6 @@ const styles = StyleSheet.create({
 		flexDirection:'row',
 		width:width,
 		height:height/10,
-		borderBottomColor:'black',
-		borderBottomWidth:1,
 		marginTop:width/50
 	},
 	photo:{
@@ -160,12 +157,15 @@ const styles = StyleSheet.create({
 	profileDetails:{
 		flexDirection:'column',
 		justifyContent:'center',
-		paddingLeft:width/20
+		paddingLeft:width/20,
 	},
 	name:{
 		fontWeight:'100',
 		color:'black'
 	},
+	status:{
+		fontSize:13
+	}
 });
 
 

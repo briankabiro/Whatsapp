@@ -2456,7 +2456,7 @@ lodash@^3.5.0:
   version "3.10.1"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
 
-lodash@^4.14.0, lodash@^4.16.6, lodash@^4.2.0, lodash@^4.3.0, lodash@^4.6.1:
+lodash@^4.0.0, lodash@^4.14.0, lodash@^4.16.6, lodash@^4.2.0, lodash@^4.3.0, lodash@^4.6.1:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
@@ -3073,7 +3073,7 @@ react-native-invertible-scroll-view@1.0.0:
     react-clone-referenced-element "^1.0.1"
     react-native-scrollable-mixin "^1.0.1"
 
-"react-native-lightbox@github:oblador/react-native-lightbox#c84a8543d4511fe6a44c3d7820747c9c1bddd875":
+react-native-lightbox@oblador/react-native-lightbox#c84a8543d4511fe6a44c3d7820747c9c1bddd875:
   version "0.6.0"
   resolved "https://codeload.github.com/oblador/react-native-lightbox/tar.gz/c84a8543d4511fe6a44c3d7820747c9c1bddd875"
   dependencies:
@@ -3090,6 +3090,13 @@ react-native-scrollable-mixin@^1.0.1:
 react-native-tab-view@^0.0.56:
   version "0.0.56"
   resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-0.0.56.tgz#7417a1f6502deef49abf58ba76a1cde213abbbf1"
+
+react-native-vector-icons:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-4.0.0.tgz#6a2f8f4c6ace613aed7748cd530809283e5b1538"
+  dependencies:
+    lodash "^4.0.0"
+    yargs "^6.3.0"
 
 react-navigation:
   version "1.0.0-beta.6"
