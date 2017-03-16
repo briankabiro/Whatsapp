@@ -4,11 +4,13 @@ import {
 	Image,
 	StyleSheet,
 	TextInput,
-	Dimensions
+	Dimensions,
+	ListView,
+	Text
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 var {height, width} = Dimensions.get('window');
-
+import InvertibleScrollView from 'react-native-invertible-scroll-view';
 /*add Text Input, add background
 	add send button, add photo and name of person in navbar, add keyboard
 */
@@ -17,29 +19,30 @@ const convo = [];
 export default class ChatScreen extends Component{
 	constructor(props) {
 	  super(props);
-	  static navigationOptions = {
-	  	title:({ state }) => 'Chat with ${state.params.user}'
-	  };
+	  
 	  this.state = {
 	  	datasource: ds.cloneWithRows(convo),
 	  	note:""
 	  }
 	}
+	static navigationOptions = {
+	  	title:({ state }) => 'Chat with'
+	  };
 
 	eachMessage(x, image){
 		if(x.person == 2){
 			return (
-				<View>
-					<View>
-						<Text>{x.note}</Text>
+				<View style={{flexDirection:'row', alignItems:'flex-end', margin:5}}>
+					<View style={{width:220, borderRadius:10, backgroundColor:"white",padding:10}}>
+						<Text style={{fontSize:15, color:'#555', fontWeight:'300'}}>{x.note}</Text>
 					</View>
 				</View>
 			)
-		} else{
+		}else{
 			return (
-				<View>
-					<View>
-						<Text>{x.note}</Text>
+				<View style={{flexDirection:'row', alignSelf:'flex-end', margin:5}}>
+					<View style={{width:220, borderRadius:10, backgroundColor:"#00b499", padding:10}}>
+						<Text style={{color:'#fff',fontSize:15,fontWeight:'300'}}>{x.note}</Text>
 					</View>
 				</View>
 			)
@@ -62,9 +65,9 @@ export default class ChatScreen extends Component{
 
 	simulator(){
 		convo.reverse();
-		convo.push({person:2, note:"Achanga za ovyo mzito"})
+		convo.push({person:2, note:"Achanga za ovyo mzito"});
 		this.setState({
-			datasource:ds.cloneWithRows(convo.reverse());
+			datasource: ds.cloneWithRows(convo.reverse())
 		})
 	}
 
@@ -83,11 +86,11 @@ export default class ChatScreen extends Component{
 				/>
 				<View style={styles.textInput}>
 				<TextInput 
-					style={{flex:1}}
 					value={note}
 					onChangeText={(note) => this.setState({ note})}
 					onSubmitEditing ={() => this.submitThis()}
 					placeholder = "Enter Your Message here"
+					style={styles.textInput}
 				/>	
 				</View>
 			</Image>
@@ -104,8 +107,8 @@ const styles = StyleSheet.create({
 	},
 	textInput:{
 		alignSelf:'flex-end',
-		width:width,
-		backgroundColor:'white'
+		backgroundColor:'white',
+		width:width
 	}
 });
 

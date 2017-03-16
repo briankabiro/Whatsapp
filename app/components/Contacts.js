@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 var {height, width} = Dimensions.get('window');
 import ChatScreen from './ChatScreen';
+import { StackNavigator } from 'react-navigation';
 
 const image1 = require('../assets/bullock.jpg');
 const image2 = require('../assets/katwoman.jpg');
@@ -68,12 +69,13 @@ const data = [{
 	image:image8
 }]
 
+
 const ds = new ListView.DataSource({ rowHasChanged:(r1,r2) => r1 !== r2 });
 
 export default class Chats extends Component{
 	constructor(props) {
 	  super(props);
-	
+
 	  this.state = {
 	  	dataSource:ds.cloneWithRows(data)
 	  };
@@ -83,10 +85,11 @@ export default class Chats extends Component{
 			label:'Contacts'
 		}
 	}
+
 	eachMessage(x){
+		
 		return(
-			<TouchableOpacity onPress={() => this.props.navigation('Chat', {user:x.first_name})} title="Chat with Nani"
-			>
+			<TouchableOpacity onPress={() => this.props.navigation.navigate('ChatScreen', {user:x.first_name})} title="Chat with Nani">
 			<View style = {styles.profile}>
 					<Image source={x.image} style = {styles.photo} />
 					<View style={styles.profileDetails}>
