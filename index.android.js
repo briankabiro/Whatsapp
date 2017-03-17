@@ -28,7 +28,7 @@ const MainScreenNavigator = TabNavigator({
         backgroundColor:'white'
     },
     style:{
-      backgroundColor:'teal',
+      backgroundColor:'#128C7E',
     },
     labelStyle:{
       fontSize:11,

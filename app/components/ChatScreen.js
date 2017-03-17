@@ -11,9 +11,12 @@ import {
 import { StackNavigator } from 'react-navigation';
 var {height, width} = Dimensions.get('window');
 import InvertibleScrollView from 'react-native-invertible-scroll-view';
+
 /*add Text Input, add background
 	add send button, add photo and name of person in navbar, add keyboard
 */
+
+
 const ds = new ListView.DataSource({rowHasChanged:(r1,r2) => r1 !== r2});
 const convo = [];
 export default class ChatScreen extends Component{
@@ -41,8 +44,8 @@ export default class ChatScreen extends Component{
 		}else{
 			return (
 				<View style={{flexDirection:'row', alignSelf:'flex-end', margin:5}}>
-					<View style={{width:220, borderRadius:10, backgroundColor:"#00b499", padding:10}}>
-						<Text style={{color:'#fff',fontSize:15,fontWeight:'300'}}>{x.note}</Text>
+					<View style={{width:220, borderRadius:10, backgroundColor:"#DCF8C6", padding:10}}>
+						<Text style={{color:'black',fontSize:15,fontWeight:'300'}}>{x.note}</Text>
 					</View>
 				</View>
 			)
