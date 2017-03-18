@@ -16,6 +16,14 @@ import InvertibleScrollView from 'react-native-invertible-scroll-view';
 	add send button, add photo and name of person in navbar, add keyboard
 */
 
+const data = [
+	"Itakuwaje sasa",
+	"Mimi niko machamber",
+	"Nataka kudoze, uko wapi?",
+	"Huko nilitoka kitambo",
+	"Gotea msupa, mshow I'm on a mission",
+	"Without permission, my people"
+];
 
 const ds = new ListView.DataSource({rowHasChanged:(r1,r2) => r1 !== r2});
 const convo = [];
@@ -25,14 +33,15 @@ export default class ChatScreen extends Component{
 	  
 	  this.state = {
 	  	datasource: ds.cloneWithRows(convo),
-	  	note:""
+	  	note:"",
+	  	counter:0
 	  }
 	}
 	static navigationOptions = {
 	  	title:({ state }) => 'Chat with'
 	  };
 
-	eachMessage(x, image){
+	eachMessage(x){
 		if(x.person == 2){
 			return (
 				<View style={{flexDirection:'row', alignItems:'flex-end', margin:5}}>
@@ -62,16 +71,20 @@ export default class ChatScreen extends Component{
 			note:''
 		})
 		setTimeout(() => {
-			this.simulator();
+			this.simulator(data[this.state.counter]);
 		}, 2000);
 	}
 
-	simulator(){
+	simulator(message){
 		convo.reverse();
-		convo.push({person:2, note:"Achanga za ovyo mzito"});
+		convo.push({person:2, note:message});
 		this.setState({
 			datasource: ds.cloneWithRows(convo.reverse())
 		})
+		this.setState({
+			counter: this.state.counter+1
+		})
+		console.log(this.state.counter)
 	}
 
 	render(){
